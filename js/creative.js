@@ -1,0 +1,99 @@
+(function($) {
+  "use strict";
+
+  $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+    if (
+      location.pathname.replace(/^\//, "") ==
+        this.pathname.replace(/^\//, "") &&
+      location.hostname == this.hostname
+    ) {
+      var target = $(this.hash);
+      target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+      if (target.length) {
+        $("html, body").animate(
+          {
+            scrollTop: target.offset().top - 72
+          },
+          1000,
+          "easeInOutExpo"
+        );
+        return false;
+      }
+    }
+  });
+
+  $(".js-scroll-trigger").click(function() {
+    $(".navbar-collapse").collapse("hide");
+  });
+
+  $("body").scrollspy({
+    target: "#mainNav",
+    offset: 75
+  });
+
+  var $window = $(window);
+  var logoMain = $("#logoMain");
+  var logoGallery = $("#logoGallery");
+
+  function checkWidth() {
+    var windowsize = $window.width();
+    if (windowsize < 992) {
+      logoMain.attr("src", "img/logo-poziom-czarne.png");
+    } else if (windowsize > 992) {
+      logoMain.attr("src", "img/logo-poziom-biale.png");
+      logoGallery.attr("src", "img/logo-poziom-czarne.png");
+    }
+  }
+  checkWidth();
+  $(window).resize(checkWidth);
+
+  var navbarCollapse = function() {
+    if ($("#mainNav").offset().top > 100) {
+      $("#mainNav").addClass("navbar-scrolled");
+      $("#mainNav")
+        .find("img")
+        .attr("src", "img/logo-poziom-czarne.png");
+    } else {
+      $("#mainNav").removeClass("navbar-scrolled");
+      $("#mainNav")
+        .find("img")
+        .attr("src", "img/logo-poziom-biale.png");
+      checkWidth();
+    }
+  };
+
+  navbarCollapse();
+
+  $(window).scroll(navbarCollapse);
+
+  $("#portfolio").magnificPopup({
+    delegate: "a",
+    type: "image",
+    tLoading: "Loading image #%curr%...",
+    mainClass: "mfp-img-mobile",
+    gallery: {
+      enabled: true,
+      navigateByImgClick: true,
+      preload: [0, 1]
+    },
+    image: {
+      tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+    }
+  });
+})(jQuery);
+
+var massony = new Macy({
+  container: ".gallery",
+  mobileFirst: true,
+  columns: 1,
+  breakAt: {
+    480: 1,
+    772: 2,
+    1024: 3,
+    1400: 4
+  },
+  margin: {
+    x: 20,
+    y: 20
+  }
+});
