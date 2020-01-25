@@ -1,6 +1,6 @@
 # Szkrabowe Love
 
-[Szkrabowe  Love](http://www.szkrabowelove.pl/)
+[Szkrabowe  Love - working website](http://www.szkrabowelove.pl/)
 
 Is one page site about baby photography.
 
