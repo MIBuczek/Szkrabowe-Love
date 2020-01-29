@@ -2,11 +2,12 @@
 
 [Szkrabowe  Love - working website](http://www.szkrabowelove.pl/)
 
-Is one page site about baby photography.
+It is one-side landing page about newborn and children photography. 
 
 ## Rooth
 
-I use for this web SCSS / Jquery / Bootstramp pack / JavaSript and libary MacyJS to render gallery.
+In this project I used project Bootstrap, jQuery libary and SCSS compilator. Addtionaly I used Masy JS libary to create
+rendered gallery.
 
 
 ## Logic
